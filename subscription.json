@@ -1,19 +1,87 @@
 {
-  "mediaSources": [
+  "format": "anx-rule/2",
+  "id": "dongmanhuayuan-mirror-bt",
+  "name": "动漫花园镜像（BT网页解析）",
+  "baseUrl": "https://www.dongmanhuayuan.com",
+  "iconUrl": "https://www.dongmanhuayuan.com/favicon.ico",
+  "description": "直接搜索 dongmanhuayuan.com 网页并尝试从详情页 input 中提取磁力链接；非 RSS；待真机验证。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Referer": "https://www.dongmanhuayuan.com/"
+  },
+  "useWebview": true,
+  "search": [
     {
-      "factoryId": "rss",
-      "version": 2,
-      "arguments": {
-        "name": "AnimeGarden BT（宽松搜索）",
-        "description": "AnimeGarden RSS 动画BT资源；使用已知可响应的 API，关闭严格匹配用于排查零结果",
-        "iconUrl": "https://animes.garden/favicon.ico",
-        "searchConfig": {
-          "searchUrl": "https://api.animes.garden/feed.xml?page=1&pageSize=100&search={keyword}&type=动画",
-          "filterByEpisodeSort": false,
-          "filterBySubjectName": false
-        }
-      },
-      "id": null
+      "op": "fetch",
+      "url": "/search/{keyword}/"
+    },
+    {
+      "op": "searchList",
+      "selectors": [
+        "table tbody tr",
+        "table tr",
+        "a[href*=\"/detail/\"]"
+      ],
+      "detailPattern": "/detail/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "follow"
+          },
+          {
+            "op": "torrentRecords",
+            "mode": "episodes",
+            "rowSelector": "body",
+            "titleSelector": "h1",
+            "titleAttr": "text",
+            "idSelector": "input[value^=\"magnet:?xt=urn:btih:\"]",
+            "idAttr": "value",
+            "unknownSourceName": "磁力资源",
+            "episodeNameTemplate": "磁力资源",
+            "episodeIndexMode": "number",
+            "requireEpisodeNumber": false,
+            "dedupeByEpisode": false
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}",
+            "readyContains": [
+              "magnet:?xt=urn:btih:"
+            ],
+            "timeoutMs": 30000
+          },
+          {
+            "op": "torrentRecords",
+            "mode": "episodes",
+            "rowSelector": "body",
+            "titleSelector": "h1",
+            "titleAttr": "text",
+            "idSelector": "input[value^=\"magnet:?xt=urn:btih:\"]",
+            "idAttr": "value",
+            "unknownSourceName": "磁力资源",
+            "episodeNameTemplate": "磁力资源",
+            "episodeIndexMode": "number",
+            "requireEpisodeNumber": false,
+            "dedupeByEpisode": false
+          }
+        ]
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "template",
+      "value": "{episodeId:raw}"
     }
   ]
 }
