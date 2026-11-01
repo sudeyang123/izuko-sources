@@ -1,0 +1,24 @@
+{
+  "format": "anx-rulehub/2",
+  "title": "动漫花园镜像 BT · Izuko TV 规则订阅",
+  "intro": "仅包含 www.dongmanhuayuan.com 的网页解析 BT 规则，需与 dongmanhuayuan.json 放在同一个 GitHub 目录。",
+  "synced": "2026-11-01T00:00:00Z",
+  "entries": [
+    {
+      "key": "dongmanhuayuan-mirror-bt",
+      "title": "动漫花园镜像（BT）",
+      "by": "自定义",
+      "rev": 1,
+      "intro": "从 www.dongmanhuayuan.com 搜索资源并从详情页提取 BT 磁力；尚未通过 Izuko TV 真机深度测试。",
+      "site": "https://www.dongmanhuayuan.com/",
+      "badge": "https://www.dongmanhuayuan.com/favicon.ico",
+      "labels": [
+        "anime",
+        "BT"
+      ],
+      "ref": "dongmanhuayuan.json",
+      "engine": "anx-rule/2",
+      "contentHash": "27d3d00a50008bde940cc133660e0ff2c37aeb44080a5baca612f548b7b568e7"
+    }
+  ]
+}
