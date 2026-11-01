@@ -2,44 +2,23 @@
   "exportedMediaSourceDataList": {
     "mediaSources": [
       {
-        "factoryId": "rule",
+        "factoryId": "rss",
         "version": 1,
         "arguments": {
-          "name": "动漫花园镜像（dongmanhuayuan）",
-          "description": "动漫花园镜像站 BT 资源检索；搜索与磁力提取规则为适配草案，需在 Izuko TV 1.0.8 中实测。",
-          "iconUrl": "https://www.dongmanhuayuan.com/favicon.ico",
-          "tier": 0,
-          "channelTiers": {},
-          "rule": {
-            "baseUrl": "https://www.dongmanhuayuan.com",
-            "search": [
-              {
-                "op": "fetch",
-                "url": "/search?keyword={keyword}"
-              },
-              {
-                "op": "subjects",
-                "list": [
-                  "a"
-                ],
-                "link": "a",
-                "name": "a",
-                "linkPattern": "/detail/"
-              }
-            ],
-            "detail": [
-              {
-                "op": "fetch"
-              },
-              {
-                "op": "regexEpisodes",
-                "pattern": "(?<url>magnet:\\?xt=urn:btih:[^\\\"'\\\\s<>]+)[^\\\\n]*"
-              }
-            ],
-            "play": [],
-            "defaultSubtitleLanguage": "CHS"
+          "name": "动漫花园镜像（AnimeGarden BT）",
+          "description": "独立的动漫 BT 搜索源，使用 AnimeGarden 第三方镜像 RSS 接口；支持关键词搜索与 RSS 磁力链接。",
+          "iconUrl": "https://animes.garden/favicon.ico",
+          "searchConfig": {
+            "searchUrl": "https://api.animes.garden/feed.xml?search={keyword}&pageSize=100",
+            "filterByEpisodeSort": true,
+            "filterBySubjectName": false
           }
         }
+      }
+    ]
+  }
+}
+
       }
     ]
   }
