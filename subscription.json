@@ -1,16 +1,19 @@
-
 {
-  "factoryId": "rss",
-  "version": 2,
-  "arguments": {
-    "name": "动漫花园镜像",
-    "description": "动漫花园 BT 资源检索（RSS 地址待验证）",
-    "iconUrl": "https://www.dongmanhuayuan.com/favicon.ico",
-    "searchConfig": {
-      "searchUrl": "https://www.dongmanhuayuan.com/topics/rss/rss.xml?keyword={keyword}",
-      "filterByEpisodeSort": true,
-      "filterBySubjectName": true
+  "mediaSources": [
+    {
+      "factoryId": "rss",
+      "version": 2,
+      "arguments": {
+        "name": "动漫花园镜像",
+        "description": "动漫花园 BT 资源检索（RSS 地址待验证）",
+        "iconUrl": "https://www.dongmanhuayuan.com/favicon.ico",
+        "searchConfig": {
+          "searchUrl": "https://www.dongmanhuayuan.com/topics/rss/rss.xml?keyword={keyword}",
+          "filterByEpisodeSort": true,
+          "filterBySubjectName": true
+        }
+      },
+      "id": null
     }
-  },
-  "id": null
+  ]
 }
