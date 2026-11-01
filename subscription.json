@@ -4,13 +4,13 @@
       "factoryId": "rss",
       "version": 2,
       "arguments": {
-        "name": "动漫花园镜像",
-        "description": "动漫花园 BT 资源检索（RSS 地址待验证）",
-        "iconUrl": "https://www.dongmanhuayuan.com/favicon.ico",
+        "name": "AnimeGarden BT（宽松搜索）",
+        "description": "AnimeGarden RSS 动画BT资源；使用已知可响应的 API，关闭严格匹配用于排查零结果",
+        "iconUrl": "https://animes.garden/favicon.ico",
         "searchConfig": {
-          "searchUrl": "https://www.dongmanhuayuan.com/topics/rss/rss.xml?keyword={keyword}",
-          "filterByEpisodeSort": true,
-          "filterBySubjectName": true
+          "searchUrl": "https://api.animes.garden/feed.xml?page=1&pageSize=100&search={keyword}&type=动画",
+          "filterByEpisodeSort": false,
+          "filterBySubjectName": false
         }
       },
       "id": null
